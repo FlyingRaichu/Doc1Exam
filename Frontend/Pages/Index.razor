@@ -1,0 +1,40 @@
+﻿@page "/"
+@using Frontend.Services.HttpClients.Interfaces
+@using Database.Domain
+@inject IUserService UserService;
+
+<PageTitle>Index</PageTitle>
+
+<h1>User list!</h1>
+
+<ul>
+    @foreach (var user in _users)
+    {
+        <li>@user.UserName, @user.Email</li>
+    }
+</ul>
+
+
+@code {
+    private IEnumerable<User> _users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadUsers();
+    }
+
+    private async Task LoadUsers()
+    {
+        try
+        {
+            _users = await UserService.GetAllUsersAsync();
+            StateHasChanged();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+}

@@ -1,0 +1,36 @@
+﻿services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: Doc
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123123as
+    ports:
+      - "5432:5432"
+    
+  
+  doc-backend:
+    image: api
+    container_name: "doc-backend"
+    build:
+      context: .
+      dockerfile: API/Dockerfile
+    environment:
+      ASPNETCORE_URLS: "http://*:7077"
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=Doc;Username=postgres;Password=123123as
+    ports:
+      - "7077:7077"
+
+  
+  doc-frontend:
+    image: frontend
+    container_name: "doc-frontend"
+    build:
+      context: .
+      dockerfile: Frontend/Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      BACKEND_URL: "http://doc-backend:7077"
+    depends_on: 
+      - doc-backend
