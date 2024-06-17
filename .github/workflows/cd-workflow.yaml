@@ -13,38 +13,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.21.0'
-
       - name: Set up Minikube
         run: |
           minikube start --driver=docker
+          minikube kubectl -- get pods -A
 
       - name: Build and Tag Docker Image with Docker Compose
         run: |
           docker-compose -f docker-compose.yml build
 
-      - name: Load Docker Image into Minikube
+      - name: Push Docker Image to Minikube's Local Registry
         run: |
-          # Point Docker CLI to Minikube's Docker daemon
           eval $(minikube -p minikube docker-env)
-
-          # Load Docker images into Minikube's local Docker registry
           docker-compose -f docker-compose.yml push
 
       - name: Deploy to Minikube
         run: |
-          # Apply Kubernetes manifests or update deployment directly
           kubectl apply -f deployment.yaml
 
       - name: Wait for Deployment to be Ready
         run: |
-          # Wait for deployment to be ready
           kubectl rollout status deployment/doc-backend
 
       - name: Verify Deployment
         run: |
-          # Optionally verify deployment status or perform integration tests
           kubectl get pods
