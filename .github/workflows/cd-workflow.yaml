@@ -33,4 +33,3 @@ jobs:
       - name: Deploy to Minikube
         run: |
           kubectl apply -f k8s/
-          kubectl rollout status deployment --all-namespaces
