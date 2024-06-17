@@ -28,13 +28,9 @@ jobs:
 
       - name: Point Docker CLI to Minikube's Docker daemon
         run: |
-          eval $(minikube docker-env)
-
-      - name: Load Docker Images into Minikube
-        run: |
-          docker-compose -f docker-compose.yml push  # Push images to Minikube's local registry
+          eval $(minikube -p minikube docker-env)
 
       - name: Deploy to Minikube
         run: |
-          kubectl apply -f deployment.yaml  # Example: Apply your Kubernetes deployment manifests
-          kubectl rollout status deployment/doc-backend
+          kubectl apply -f k8s/
+          kubectl rollout status deployment --all-namespaces
