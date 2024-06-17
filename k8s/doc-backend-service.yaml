@@ -1,17 +1,17 @@
 apiVersion: v1
-kind: Service
+kind: Service #Defines that this is a service
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert # Command used to convert
     kompose.version: 1.32.0 (765fde254)
   labels:
-    io.kompose.service: doc-backend
-  name: doc-backend
+    io.kompose.service: doc-backend #Value that identifies this service
+  name: doc-backend #Name of the service object
 spec:
-  type: NodePort
+  type: NodePort #Indicates that the service will be exposed by its NodePort type
   ports:
     - name: "7077"
       port: 7077
       targetPort: 7077
   selector:
-    io.kompose.service: doc-backend
+    io.kompose.service: doc-backend #This is how we define which pod this targets

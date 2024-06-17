@@ -1,0 +1,29 @@
+﻿name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.0'
+
+      - name: Set up Kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl set image deployment/doc-backend doc-backend=${{ secrets.DOCKER_USERNAME }}/doc-backend:latest
+          kubectl rollout status deployment/doc-backend

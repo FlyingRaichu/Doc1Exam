@@ -13,7 +13,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cade43f-85ad-4a66-b7b5-dadbc4867d4d" name="Changes" comment="" />
+    <list default="true" id="8cade43f-85ad-4a66-b7b5-dadbc4867d4d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/ci-workflow.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DOCApiTier/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DOCApiTier/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k8s/doc-backend-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/k8s/doc-backend-service.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JSON File" />
+        <option value="Kubernetes Pod" />
       </list>
     </option>
   </component>
@@ -47,31 +53,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\Misho\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Misho\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\Misho\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Misho\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Misho\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Misho\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.DOCApiTier: http">
     <configuration name="DOCApiTier: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/API/API.csproj" />
@@ -239,6 +245,9 @@
       <workItem from="1718466551817" duration="394000" />
       <workItem from="1718466967635" duration="10621000" />
       <workItem from="1718477738135" duration="610000" />
+      <workItem from="1718541155582" duration="10233000" />
+      <workItem from="1718581816696" duration="34000" />
+      <workItem from="1718622204239" duration="354000" />
     </task>
     <task id="LOCAL-00001" summary="Git and docker ignores.">
       <option name="closed" value="true" />
@@ -272,7 +281,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718478316198</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Kubernetes files.">
+      <option name="closed" value="true" />
+      <created>1718551143405</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718551143405</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Removed unnecessary copy">
+      <option name="closed" value="true" />
+      <created>1718553127752</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718553127752</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +328,9 @@
     <MESSAGE value="Git and dockerignores" />
     <MESSAGE value="Initial commit." />
     <MESSAGE value="Whatever commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Whatever commit." />
+    <MESSAGE value="Kubernetes files." />
+    <MESSAGE value="Removed unnecessary copy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary copy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

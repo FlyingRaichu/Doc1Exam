@@ -1,6 +1,6 @@
 ﻿services:
   postgres:
-    image: postgres:latest
+    image: postgres:latest #This comes from dockerhub
     environment:
       POSTGRES_DB: Doc
       POSTGRES_USER: postgres
@@ -16,8 +16,8 @@
       context: .
       dockerfile: API/Dockerfile
     environment:
-      ASPNETCORE_URLS: "http://*:7077"
-      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=Doc;Username=postgres;Password=123123as
+      ASPNETCORE_URLS: "http://*:7077" #The URL the app will listen on
+      ConnectionStrings__DefaultConnection: Host=postgres;Port=5432;Database=Doc;Username=postgres;Password=123123as #Sets connection string
     ports:
       - "7077:7077"
 
@@ -31,6 +31,6 @@
     ports:
       - "8080:80"
     environment:
-      BACKEND_URL: "http://doc-backend:7077"
+      BACKEND_URL: "http://doc-backend:7077" #Specifying the URL of the backend service
     depends_on: 
       - doc-backend
