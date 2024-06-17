@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DOCApiTier.Controllers;
 
+
+//Users controller
 [ApiController]
 [Route("[controller]")]
 public class UsersController : ControllerBase
