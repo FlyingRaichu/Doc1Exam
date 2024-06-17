@@ -20,7 +20,7 @@ jobs:
 
       - name: Set up Minikube
         run: |
-          minikube start --driver=docker  # Ensure Minikube is started with Docker driver
+          minikube start --driver=docker
 
       - name: Build and Tag Docker Image with Docker Compose
         run: |
@@ -28,14 +28,16 @@ jobs:
 
       - name: Load Docker Image into Minikube
         run: |
-          # Load Docker images into Minikube's local Docker registry
+          # Point Docker CLI to Minikube's Docker daemon
           eval $(minikube -p minikube docker-env)
+
+          # Load Docker images into Minikube's local Docker registry
           docker-compose -f docker-compose.yml push
 
       - name: Deploy to Minikube
         run: |
           # Apply Kubernetes manifests or update deployment directly
-          kubectl apply -f deployment.yaml  # Example deployment file
+          kubectl apply -f deployment.yaml
 
       - name: Wait for Deployment to be Ready
         run: |
