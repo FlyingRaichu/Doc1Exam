@@ -29,10 +29,3 @@ jobs:
 
       - name: Build Docker images using Docker Compose
         run: docker-compose -f docker-compose.yml build
-
-      - name: Push Docker images to local registry
-        run: docker-compose -f docker-compose.yml push
-
-      # Save image details if needed (example with environment variable)
-      #- name: Save Docker image digest
-      #  run: echo "IMAGE_DIGEST=${{ steps.docker_build.outputs.digest }}" >> $GITHUB_ENV
