@@ -22,17 +22,24 @@ jobs:
         run: |
           minikube start --driver=docker  # Adjust the driver based on your setup
 
-      - name: Build and Tag Docker Image
+      - name: Build and Tag Docker Image with Docker Compose
         run: |
-          docker build -t doc-backend:latest .
-          docker tag doc-backend:latest localhost:5000/doc-backend:latest
+          docker-compose -f docker-compose.yml build
 
       - name: Load Docker Image into Minikube
         run: |
-          minikube ssh -- docker image save -o /tmp/doc-backend.tar localhost:5000/doc-backend:latest
-          minikube ssh -- docker image load -i /tmp/doc-backend.tar
+          docker-compose -f docker-compose.yml push
 
-      - name: Deploy to Minikube
+      - name: Deploy to Minikube using Docker Compose
         run: |
-          kubectl set image deployment/doc-backend doc-backend=localhost:5000/doc-backend:latest
-          kubectl rollout status deployment/doc-backend
+          minikube ssh -- docker-compose -f docker-compose.yml up -d
+
+      - name: Wait for Deployment to be Ready
+        run: |
+          # Add any necessary wait commands here to ensure deployment readiness
+          sleep 30  # Example wait time; adjust based on your application's startup time
+
+      - name: Verify Deployment
+        run: |
+          kubectl get pods  # Example command to verify deployment status
+
