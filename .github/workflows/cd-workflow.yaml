@@ -18,12 +18,21 @@ jobs:
         with:
           version: 'v1.21.0'
 
-      - name: Set up Kubeconfig
+      - name: Set up Minikube
         run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG }}" > $HOME/.kube/config
+          minikube start --driver=docker  # Adjust the driver based on your setup
 
-      - name: Deploy to Kubernetes
+      - name: Build and Tag Docker Image
         run: |
-          kubectl set image deployment/doc-backend doc-backend=${{ secrets.DOCKER_USERNAME }}/doc-backend:latest
+          docker build -t doc-backend:latest .
+          docker tag doc-backend:latest localhost:5000/doc-backend:latest
+
+      - name: Load Docker Image into Minikube
+        run: |
+          minikube ssh -- docker image save -o /tmp/doc-backend.tar localhost:5000/doc-backend:latest
+          minikube ssh -- docker image load -i /tmp/doc-backend.tar
+
+      - name: Deploy to Minikube
+        run: |
+          kubectl set image deployment/doc-backend doc-backend=localhost:5000/doc-backend:latest
           kubectl rollout status deployment/doc-backend
